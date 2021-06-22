@@ -1,0 +1,207 @@
+<!--  
+(c) ISTVN
+2021-06-21
+Servicio Web para realizar operaciones CRUD (listar, insert, update, delete)
+
+Online WSDL 1.1 SOAP generator 0.2
+Julien Blitte
+  -->
+<definitions xmlns:tns="istvn.edu.ec.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="istvn.edu.ec.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="Servicio Web para realizar operaciones CRUD (listar, insert, update, delete)" targetNamespace="istvn.edu.ec.wsdl">
+<!--  definition of datatypes  -->
+<types>
+<schema xmlns="http://www.w3.org/2000/10/XMLSchema" targetNamespace="istvn.edu.ec.xsd">
+<element name="respuesta">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="id">
+<complexType>
+<all>
+<element name="value" type="int"/>
+</all>
+</complexType>
+</element>
+<element name="cedula">
+<complexType>
+<all>
+<element name="value" type="int"/>
+</all>
+</complexType>
+</element>
+<element name="nombre">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="apellido">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="usuario">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="clave">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="tpusuario">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="telefono">
+<complexType>
+<all>
+<element name="value" type="int"/>
+</all>
+</complexType>
+</element>
+<element name="direccion">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="correo">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="fecha">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="num">
+<complexType>
+<all>
+<element name="value" type="int"/>
+</all>
+</complexType>
+</element>
+</schema>
+</types>
+<!--  response messages  -->
+<message name="returns_respuesta">
+<part name="respuesta" type="xsd:respuesta"/>
+</message>
+<!--  request messages  -->
+<message name="insertar">
+<part name="cedula" type="xsd:cedula"/>
+<part name="nombre" type="xsd:nombre"/>
+<part name="apellido" type="xsd:apellido"/>
+<part name="usuario" type="xsd:usuario"/>
+<part name="clave" type="xsd:clave"/>
+<part name="tpusuario" type="xsd:tpusuario"/>
+<part name="telefono" type="xsd:telefono"/>
+<part name="direccion" type="xsd:direccion"/>
+<part name="correo" type="xsd:correo"/>
+<part name="fecha" type="xsd:fecha"/>
+</message>
+<message name="modificar">
+<part name="id" type="xsd:id"/>
+<part name="cedula" type="xsd:cedula"/>
+<part name="nombre" type="xsd:nombre"/>
+<part name="apellido" type="xsd:apellido"/>
+<part name="usuario" type="xsd:usuario"/>
+<part name="clave" type="xsd:clave"/>
+<part name="tpusuario" type="xsd:tpusuario"/>
+<part name="telefono" type="xsd:telefono"/>
+<part name="direccion" type="xsd:direccion"/>
+<part name="correo" type="xsd:correo"/>
+<part name="fecha" type="xsd:fecha"/>
+</message>
+<message name="eliminar">
+<part name="id" type="xsd:id"/>
+</message>
+<message name="buscar">
+<part name="num" type="xsd:num"/>
+</message>
+<!--  server's services  -->
+<portType name="CRUD">
+<operation name="insertar">
+<input message="tns:insertar"/>
+<output message="tns:returns_respuesta"/>
+</operation>
+<operation name="modificar">
+<input message="tns:modificar"/>
+<output message="tns:returns_respuesta"/>
+</operation>
+<operation name="eliminar">
+<input message="tns:eliminar"/>
+<output message="tns:returns_respuesta"/>
+</operation>
+<operation name="buscar">
+<input message="tns:buscar"/>
+<output message="tns:returns_respuesta"/>
+</operation>
+</portType>
+<!--  server encoding  -->
+<binding name="CRUD_webservices" type="tns:CRUD">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="insertar">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#insertar"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+<operation name="modificar">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#modificar"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+<operation name="eliminar">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#eliminar"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+<operation name="buscar">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#buscar"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+</binding>
+<!--  access to service provider  -->
+<service name="ISTVN">
+<port name="ISTVN_0" binding="CRUD_webservices">
+<soap:address location="http://localhost:8080/PROGRAMACION%20WEB/VentaAutosEc/server.php"/>
+</port>
+</service>
+</definitions>
